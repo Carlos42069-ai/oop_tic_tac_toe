@@ -122,3 +122,16 @@ class TicTacToe:
         if self.turns == 9:
             self.game_over = True
             self.label.config(text="Tie!", foreground=self.color_yellow)
+
+    def new_game(self):
+        self.turns = 0
+        self.game_over = False
+
+        self.label.config(text=self.curr_player+"'s turn", foreground="white")
+
+        for row in range(3):
+            for column in range(3):
+                self.board[row][column].config(text="", foreground=self.color_blue, background=self.color_gray)
+
+# Start the game
+TicTacToe()
