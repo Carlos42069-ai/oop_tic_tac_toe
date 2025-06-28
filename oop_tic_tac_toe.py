@@ -17,3 +17,7 @@ class TicTacToe:
 
         self.turns = 0
         self.game_over = False
+
+        self.window = tkinter.Tk() #create the game window
+        self.window.title("Tic Tac Toe")
+        self.window.resizable(False, False)
