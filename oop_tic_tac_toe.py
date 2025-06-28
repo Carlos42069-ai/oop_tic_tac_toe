@@ -75,3 +75,50 @@ class TicTacToe:
 
         #checking winner
         self.check_winner()
+
+    def check_winner(self):
+        self.turns += 1
+
+        #horizontally, check 3 rows
+        for row in range(3):
+            if (self.board[row][0]["text"] == self.board[row][1]["text"] == self.board[row][2]["text"]
+                and self.board[row][0]["text"] != ""):
+                self.label.config(text=self.board[row][0]["text"]+" is the winner!", foreground=self.color_yellow)
+                for column in range(3):
+                    self.board[row][column].config(foreground=self.color_yellow, background=self.color_light_gray)
+                self.game_over = True
+                return
+
+        #vertically, check 3 columns
+        for column in range(3):
+            if (self.board[0][column]["text"] == self.board[1][column]["text"] == self.board[2][column]["text"]
+                and self.board[0][column]["text"] != ""):
+                self.label.config(text=self.board[0][column]["text"]+" is the winner!", foreground=self.color_yellow)
+                for row in range(3):
+                    self.board[row][column].config(foreground=self.color_yellow, background=self.color_light_gray)
+                self.game_over = True
+                return
+
+        #diagonally
+        if (self.board[0][0]["text"] == self.board[1][1]["text"] == self.board[2][2]["text"]
+            and self.board[0][0]["text"] != ""):
+            self.label.config(text=self.board[0][0]["text"]+" is the winner!", foreground=self.color_yellow)
+            for i in range(3):
+                self.board[i][i].config(foreground=self.color_yellow, background=self.color_light_gray)
+            self.game_over = True
+            return
+
+        #anti-diagonally
+        if (self.board[0][2]["text"] == self.board[1][1]["text"] == self.board[2][0]["text"]
+            and self.board[0][2]["text"] != ""):
+            self.label.config(text=self.board[0][2]["text"]+" is the winner!", foreground=self.color_yellow)
+            self.board[0][2].config(foreground=self.color_yellow, background=self.color_light_gray)
+            self.board[1][1].config(foreground=self.color_yellow, background=self.color_light_gray)
+            self.board[2][0].config(foreground=self.color_yellow, background=self.color_light_gray)
+            self.game_over = True
+            return
+
+        #tie
+        if self.turns == 9:
+            self.game_over = True
+            self.label.config(text="Tie!", foreground=self.color_yellow)
