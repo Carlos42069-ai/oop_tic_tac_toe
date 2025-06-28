@@ -33,3 +33,7 @@ class TicTacToe:
                                                          background=self.color_gray, foreground=self.color_blue, width=4, height=1,
                                                          command=lambda row=row, column=column: self.set_tile(row, column))
                 self.board[row][column].grid(row=row+1, column=column)
+
+        button = tkinter.Button(self.frame, text="restart", font=("Consolas", 20), background=self.color_gray,
+                                foreground="white", command=self.new_game)
+        button.grid(row=4, column=0, columnspan=3, sticky="we")
