@@ -26,3 +26,10 @@ class TicTacToe:
         self.label = tkinter.Label(self.frame, text=self.curr_player+"'s turn", font=("Consolas", 20), background=self.color_gray,
                                    foreground="white")
         self.label.grid(row=0, column=0, columnspan=3, sticky="we")
+
+        for row in range(3):
+            for column in range(3):
+                self.board[row][column] = tkinter.Button(self.frame, text="", font=("Consolas", 50, "bold"),
+                                                         background=self.color_gray, foreground=self.color_blue, width=4, height=1,
+                                                         command=lambda row=row, column=column: self.set_tile(row, column))
+                self.board[row][column].grid(row=row+1, column=column)
