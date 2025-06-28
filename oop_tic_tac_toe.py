@@ -37,3 +37,14 @@ class TicTacToe:
         button = tkinter.Button(self.frame, text="restart", font=("Consolas", 20), background=self.color_gray,
                                 foreground="white", command=self.new_game)
         button.grid(row=4, column=0, columnspan=3, sticky="we")
+
+        self.frame.pack()
+
+        self.window.update()
+        window_width = self.window.winfo_width()
+        window_height = self.window.winfo_height()
+        screen_width = self.window.winfo_screenwidth()
+        screen_height = self.window.winfo_screenheight()
+
+        window_x = int((screen_width/2) - (window_width/2))
+        window_y = int((screen_height/2) - (window_height/2))
