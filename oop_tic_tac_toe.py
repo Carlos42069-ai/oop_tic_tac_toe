@@ -21,3 +21,8 @@ class TicTacToe:
         self.window = tkinter.Tk() #create the game window
         self.window.title("Tic Tac Toe")
         self.window.resizable(False, False)
+
+        self.frame = tkinter.Frame(self.window)
+        self.label = tkinter.Label(self.frame, text=self.curr_player+"'s turn", font=("Consolas", 20), background=self.color_gray,
+                                   foreground="white")
+        self.label.grid(row=0, column=0, columnspan=3, sticky="we")
