@@ -53,3 +53,25 @@ class TicTacToe:
         self.window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
 
         self.window.mainloop()
+
+    def set_tile(self, row, column):
+        if self.game_over:
+            return
+
+        if self.board[row][column]["text"] != "":
+            #already taken spot
+            return
+
+        #mark the board
+        self.board[row][column]["text"] = self.curr_player
+
+        #switch player
+        if self.curr_player == self.playerO:
+            self.curr_player = self.playerX
+        else:
+            self.curr_player = self.playerO
+
+        self.label["text"] = self.curr_player+"'s turn"
+
+        #checking winner
+        self.check_winner()
