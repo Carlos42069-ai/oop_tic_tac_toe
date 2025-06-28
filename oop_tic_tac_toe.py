@@ -1,10 +1,12 @@
 import tkinter #tk-interface (graphical user interface library)
 
-def set_tile(row, column):
-    global curr_player
-
-    if (game_over):
-        return
+class TicTacToe:
+    def __init__(self):
+        self.playerX = "X"
+        self.playerO = "O"
+        self.curr_player = self.playerX
+        self.turns = 0
+        self.game_over = False
 
     if board[row][column]["text"] != "":
         #already taken spot
